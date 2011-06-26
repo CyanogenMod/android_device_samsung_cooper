@@ -104,6 +104,6 @@ BOARD_BML_RECOVERY_PARTION := "/dev/block/bml9"
 BOARD_USE_GR_FLIP_32 := true
 BOARD_FB_FORCE_24_BPP := true
 BOARD_FB_SINGLE_BUFFERED := true
-
+TARGET_USERIMAGES_USE_EXT4 := true
 
 BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/cooper/recovery/recovery_ui.c
