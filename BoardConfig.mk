@@ -26,10 +26,8 @@ USE_CAMERA_STUB := false
 
 TARGET_NO_BOOTLOADER := true
 
-TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/galaxyace/recovery_kernel
-TARGET_RECOVERY_INITRC := device/samsung/galaxyace/recovery.rc
-
-#BOARD_KERNEL_CMDLINE := androidboot.hardware=blade console=null g_android.product_id=0x1354 g_android.serial_number=Blade-CM7
+TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/cooper/recovery_kernel
+TARGET_RECOVERY_INITRC := device/samsung/cooper/recovery.rc
 
 TARGET_BOARD_PLATFORM := msm7k
 TARGET_ARCH_VARIANT := armv6-vfp
@@ -37,7 +35,7 @@ TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
 
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
-TARGET_BOOTLOADER_BOARD_NAME := galaxyace
+TARGET_BOOTLOADER_BOARD_NAME := cooper
 
 BOARD_HAVE_BLUETOOTH := true
 
@@ -58,7 +56,7 @@ TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 JS_ENGINE := v8
 
 # OpenGL drivers config file path
-BOARD_EGL_CFG := device/samsung/galaxyace/egl.cfg
+BOARD_EGL_CFG := device/samsung/cooper/egl.cfg
 
 # No fallback font by default (space savings)
 #NO_FALLBACK_FONT:=true
@@ -68,7 +66,7 @@ BOARD_GPS_LIBRARIES := libloc_api
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_GPS := true
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := blade
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := cooper
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 
 BOARD_KERNEL_BASE := 0x13600000
@@ -108,4 +106,4 @@ BOARD_FB_FORCE_24_BPP := true
 BOARD_FB_SINGLE_BUFFERED := true
 
 
-BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/galaxyace/recovery/recovery_ui.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/cooper/recovery/recovery_ui.c

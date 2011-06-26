@@ -1,4 +1,4 @@
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),galaxyace)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),cooper)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)

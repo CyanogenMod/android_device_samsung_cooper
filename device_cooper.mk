@@ -25,11 +25,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-DEVICE_PACKAGE_OVERLAYS := device/samsung/galaxyace/overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/cooper/overlay
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := galaxyaxce
-PRODUCT_DEVICE := galaxyaxce
+PRODUCT_NAME := cooper
+PRODUCT_DEVICE := cooper
 PRODUCT_MODEL := GT-S5830
 
 PRODUCT_PACKAGES += \
@@ -43,44 +43,44 @@ PRODUCT_PACKAGES += \
     SpareParts \
     Development \
     Term \
-    gralloc.galaxyace \
-    copybit.galaxyace \
-    gps.galaxyace \
-    sensors.galaxyace \
+    gralloc.cooper \
+    copybit.cooper \
+    gps.cooper \
+    sensors.cooper \
     libOmxCore \
     libOmxVidEnc \
     FM \
     dexpreopt
 
 # proprietary side of the device
-$(call inherit-product-if-exists, vendor/samsung/galaxyace/galaxyace-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/cooper/cooper-vendor.mk)
 
 DISABLE_DEXPREOPT := false
 
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/qwerty.kl:system/usr/keylayout/qwerty.kl
+    device/samsung/cooper/qwerty.kl:system/usr/keylayout/qwerty.kl
 
 # fstab
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/vold.fstab:system/etc/vold.fstab
+    device/samsung/cooper/vold.fstab:system/etc/vold.fstab
 
 # Init
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/init.galaxyace.rc:root/init.galaxyace.rc \
-    device/samsung/galaxyace/ueventd.galaxyace.rc:root/ueventd.galaxyace.rc
+    device/samsung/cooper/init.galaxyace.rc:root/init.galaxyace.rc \
+    device/samsung/cooper/ueventd.galaxyace.rc:root/ueventd.galaxyace.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/AudioFilter.csv:system/etc/AudioFilter.csv \
-    device/samsung/galaxyace/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt
+    device/samsung/cooper/AudioFilter.csv:system/etc/AudioFilter.csv \
+    device/samsung/cooper/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt
 
 # WLAN + BT
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/init.bt.sh:system/etc/init.bt.sh \
-    device/samsung/galaxyace/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/samsung/galaxyace/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
-    device/samsung/galaxyace/prebuilt/hostapd:system/bin/hostapd \
-    device/samsung/galaxyace/prebuilt/hostapd.conf:system/etc/wifi/hostapd.conf
+    device/samsung/cooper/init.bt.sh:system/etc/init.bt.sh \
+    device/samsung/cooper/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/samsung/cooper/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+    device/samsung/cooper/prebuilt/hostapd:system/bin/hostapd \
+    device/samsung/cooper/prebuilt/hostapd.conf:system/etc/wifi/hostapd.conf
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -95,27 +95,27 @@ PRODUCT_COPY_FILES += \
 
 #Kernel Modules
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/prebuilt/ar6000.ko:system/wifi/ar6000.ko \
-    device/samsung/galaxyace/prebuilt/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
-    device/samsung/galaxyace/prebuilt/zram.ko:system/lib/modules/2.6.32.9-perf/zram.ko
+    device/samsung/cooper/prebuilt/ar6000.ko:system/wifi/ar6000.ko \
+    device/samsung/cooper/prebuilt/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
+    device/samsung/cooper/prebuilt/zram.ko:system/lib/modules/2.6.32.9-perf/zram.ko
     
 #Kernel Modules for Recovery (RFS)
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/prebuilt/modules/recovery/fsr.ko:recovery/root/lib/modules/fsr.ko \
-    device/samsung/galaxyace/prebuilt/modules/recovery/fsr_stl.ko:recovery/root/lib/modules/fsr_stl.ko \
-    device/samsung/galaxyace/prebuilt/modules/recovery/rfs_fat.ko:recovery/root/lib/modules/rfs_fat.ko \
-    device/samsung/galaxyace/prebuilt/modules/recovery/rfs_glue.ko:recovery/root/lib/modules/rfs_glue.ko \
-    device/samsung/galaxyace/prebuilt/modules/recovery/sec_param.ko:recovery/root/lib/modules/sec_param.ko
+    device/samsung/cooper/prebuilt/modules/recovery/fsr.ko:recovery/root/lib/modules/fsr.ko \
+    device/samsung/cooper/prebuilt/modules/recovery/fsr_stl.ko:recovery/root/lib/modules/fsr_stl.ko \
+    device/samsung/cooper/prebuilt/modules/recovery/rfs_fat.ko:recovery/root/lib/modules/rfs_fat.ko \
+    device/samsung/cooper/prebuilt/modules/recovery/rfs_glue.ko:recovery/root/lib/modules/rfs_glue.ko \
+    device/samsung/cooper/prebuilt/modules/recovery/sec_param.ko:recovery/root/lib/modules/sec_param.ko
 
 #WiFi firmware
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/firmware/data.patch.bin:system/wifi/data.patch.bin \
-    device/samsung/galaxyace/firmware/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \
-    device/samsung/galaxyace/firmware/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin
+    device/samsung/cooper/firmware/data.patch.bin:system/wifi/data.patch.bin \
+    device/samsung/cooper/firmware/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \
+    device/samsung/cooper/firmware/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin
 
 #Media profile
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxyace/media_profiles.xml:system/etc/media_profiles.xml
+    device/samsung/cooper/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
