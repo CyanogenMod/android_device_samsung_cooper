@@ -66,8 +66,8 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/init.galaxyace.rc:root/init.galaxyace.rc \
-    device/samsung/cooper/ueventd.galaxyace.rc:root/ueventd.galaxyace.rc
+    device/samsung/cooper/init.cooper.rc:root/init.cooper.rc \
+    device/samsung/cooper/ueventd.cooper.rc:root/ueventd.cooper.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -95,6 +95,9 @@ PRODUCT_COPY_FILES += \
 
 #Kernel Modules
 PRODUCT_COPY_FILES += \
+    device/samsung/cooper/prebuilt/modules/fsr.ko:root/lib/modules/fsr.ko \
+    device/samsung/cooper/prebuilt/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
+    device/samsung/cooper/prebuilt/modules/sec_param.ko:root/lib/modules/sec_param.ko \
     device/samsung/cooper/prebuilt/ar6000.ko:system/wifi/ar6000.ko \
     device/samsung/cooper/prebuilt/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
     device/samsung/cooper/prebuilt/zram.ko:system/lib/modules/2.6.32.9-perf/zram.ko

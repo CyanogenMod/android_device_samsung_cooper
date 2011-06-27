@@ -8,6 +8,14 @@ on property:dev.bootcomplete=1
 
 on boot
 
+# insmod fsr modules
+    insmod /lib/modules/fsr.ko
+    insmod /lib/modules/fsr_stl.ko
+    insmod /lib/modules/sec_param.ko
+
+    mount ext4 /dev/block/stl12 /system wait nosuid nodev noatime nodiratime noauto_da_alloc
+    mount ext4 /dev/block/stl13 /data wait nosuid nodev noatime nodiratime noauto_da_alloc
+    mount ext4 /dev/block/stl14 /cache wait nosuid nodev noatime nodiratime noauto_da_alloc
 # cpufreq configurations
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
