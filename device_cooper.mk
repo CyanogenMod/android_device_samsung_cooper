@@ -50,6 +50,7 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVidEnc \
     FM \
+    make_ext4fs \
     dexpreopt
 
 # proprietary side of the device
@@ -66,8 +67,8 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/init.cooper.rc:root/init.cooper.rc \
-    device/samsung/cooper/ueventd.cooper.rc:root/ueventd.cooper.rc
+    device/samsung/cooper/init.gt-s5830.rc:root/init.gt-s5830.rc \
+    device/samsung/cooper/ueventd.gt-s5830.rc:root/ueventd.gt-s5830.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
