@@ -43,10 +43,6 @@ PRODUCT_PACKAGES += \
     SpareParts \
     Development \
     Term \
-    gralloc.cooper \
-    copybit.cooper \
-    gps.cooper \
-    sensors.cooper \
     libOmxCore \
     libOmxVidEnc \
     FM \
@@ -115,7 +111,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/cooper/firmware/data.patch.bin:system/wifi/data.patch.bin \
     device/samsung/cooper/firmware/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \
-    device/samsung/cooper/firmware/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin
+    device/samsung/cooper/firmware/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin    
+    
+#GPU firmware
+PRODUCT_COPY_FILES += \
+    device/samsung/cooper/firmware/yamato_pm4.fw:system/etc/frimware/yamato_pm4.fw \
+    device/samsung/cooper/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw 
 
 #Media profile
 PRODUCT_COPY_FILES += \
@@ -147,15 +148,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     qemu.sf.lcd_density=160
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim=true \
-    ro.com.android.dateformat=dd-MM-yyyy \
-    ro.ril.hsxpa=2 \
-    ro.ril.gprsclass=10 \
-    ro.build.baseband_version=P729BB01 \
-    ro.telephony.default_network=0 \
-    ro.telephony.call_ring.multiple=false
-
-PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.locationfeatures=1 \
     ro.setupwizard.enable_bypass=1 \
     ro.media.dec.jpeg.memcap=20000000 \
@@ -166,4 +158,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-data-only=1 \
     ro.opengles.version=131072  \
     ro.compcache.default=0
-
+# See comment at the top of this file. This is where the other
+# half of the device-specific product definition file takes care
+# of the aspects that require proprietary drivers that aren't
+# commonly available
+$(call inherit-product-if-exists, vendor/samsung/cooper/cooper-vendor-blobs.mk)
