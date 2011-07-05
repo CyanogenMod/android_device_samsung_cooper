@@ -124,7 +124,7 @@
     <!-- Regex array of allowable upstream ifaces for tethering - for example if you want
          tethering on a new interface called "foo2" add <item>"foo\\d"</item> to the array -->
     <string-array translatable="false" name="config_tether_upstream_regexs">
-        <item>"rmnet\\d"</item>
+        <item>"pdp\\d"</item>
         <item>"wlan\\d"</item>
     </string-array>
 

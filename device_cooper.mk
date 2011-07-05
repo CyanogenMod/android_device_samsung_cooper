@@ -109,9 +109,12 @@ PRODUCT_COPY_FILES += \
 
 #WiFi firmware
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/firmware/data.patch.bin:system/wifi/data.patch.bin \
-    device/samsung/cooper/firmware/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \
-    device/samsung/cooper/firmware/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin    
+    device/samsung/cooper/firmware/athtcmd_ram.bin:system/wifi/ath6k/AR6003/hw2.0/athtcmd_ram.bin \
+    device/samsung/cooper/firmware/athwlan.bin.z77:system/wifi/ath6k/AR6003/hw2.0/athwlan.bin.z77 \
+    device/samsung/cooper/firmware/bdata.SD31.bin:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin \
+    device/samsung/cooper/firmware/bdata.SD31.bin.04:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin.04 \
+    device/samsung/cooper/firmware/data.patch.bin:system/wifi/ath6k/AR6003/hw2.0/data.patch.bin \
+    device/samsung/cooper/firmware/otp.bin.z77:system/wifi/ath6k/AR6003/hw2.0/otp.bin.z77
     
 #GPU firmware
 PRODUCT_COPY_FILES += \
@@ -130,6 +133,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
+    ro.telephony.ril_class=samsung \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
     ro.com.android.dataroaming=false
