@@ -115,8 +115,8 @@ PRODUCT_COPY_FILES += \
     
 #GPU firmware
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/firmware/yamato_pm4.fw:system/etc/frimware/yamato_pm4.fw \
-    device/samsung/cooper/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw 
+    device/samsung/cooper/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    device/samsung/cooper/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw
 
 #Media profile
 PRODUCT_COPY_FILES += \
@@ -130,8 +130,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libsec-ril.so \
-    rild.libargs=-d /dev/smd0 \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
     ro.com.android.dataroaming=false

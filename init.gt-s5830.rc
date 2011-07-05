@@ -16,6 +16,16 @@ on fs
     mount ext4 /dev/block/stl13 /data wait nosuid nodev noatime nodiratime noauto_da_alloc
     mount ext4 /dev/block/stl14 /cache wait nosuid nodev noatime nodiratime noauto_da_alloc
 
+    chown radio /dev/bml7
+    chown radio /dev/bml10
+    chown radio /dev/bml11
+
+    write /sys/block/stl12/queue/read_ahead_kb 4
+    write /sys/block/stl13/queue/read_ahead_kb 4
+    write /sys/block/stl14/queue/read_ahead_kb 4
+    write /sys/devices/virtual/block/stl12/queue/read_ahead_kb 4
+    write /sys/devices/virtual/block/stl13/queue/read_ahead_kb 4
+    write /sys/devices/virtual/block/stl14/queue/read_ahead_kb 4
 
 on boot
 
