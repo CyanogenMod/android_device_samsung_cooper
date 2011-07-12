@@ -47,6 +47,8 @@ PRODUCT_PACKAGES += \
     libOmxVidEnc \
     FM \
     make_ext4fs \
+    brcm_patchram_plus \
+    sec_touchscreen.kcm \
     dexpreopt
 
 # proprietary side of the device
@@ -55,7 +57,8 @@ $(call inherit-product-if-exists, vendor/samsung/cooper/cooper-vendor.mk)
 DISABLE_DEXPREOPT := false
 
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/qwerty.kl:system/usr/keylayout/qwerty.kl
+    device/samsung/cooper/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/samsung/cooper/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl
 
 # fstab
 PRODUCT_COPY_FILES += \
@@ -73,7 +76,6 @@ PRODUCT_COPY_FILES += \
 
 # WLAN + BT
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/init.bt.sh:system/etc/init.bt.sh \
     device/samsung/cooper/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/cooper/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     device/samsung/cooper/prebuilt/hostapd:system/bin/hostapd \
@@ -133,7 +135,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
+    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
     ro.telephony.ril_class=samsung \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
