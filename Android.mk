@@ -12,5 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+LOCAL_PATH := $(call my-dir)
 
-include $(call all-named-subdir-makefiles, recovery libaudio libril libcamera libgralloc libcopybit libsensors)
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := sec_touchscreen.kcm
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_KEY_CHAR_MAP)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))

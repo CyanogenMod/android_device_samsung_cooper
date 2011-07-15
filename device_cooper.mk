@@ -49,6 +49,8 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     brcm_patchram_plus \
     sec_touchscreen.kcm \
+    copybit.cooper \
+    gralloc.cooper \
     dexpreopt
 
 # proprietary side of the device
