@@ -94,6 +94,10 @@ on boot
     chown system system /sys/devices/platform/msm_sdcc.4/polling
     chown system system /sys/devices/platform/android_usb/composition
     chown system system /sys/devices/platform/android_usb/remote_wakeup
+    
+    # create data/gps for GPS daemon
+    mkdir /data/gps 771 gps system
+    chown gps system /data/gps
 
 
 # Enable MASS storage on SDCARD
@@ -141,6 +145,6 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --bau
 	disabled
 	oneshot
 
-service akmd /system/bin/akmd2
-    oneshot
-
+service gps-daemon /system/vendor/bin/gpsd
+    user system
+    group system inet
