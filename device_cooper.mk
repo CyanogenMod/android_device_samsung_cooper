@@ -52,6 +52,7 @@ PRODUCT_PACKAGES += \
     copybit.cooper \
     lights.cooper \
     gralloc.cooper \
+    setup_fs \
     dexpreopt
 
 # proprietary side of the device
