@@ -32,7 +32,7 @@ static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const *const LCD_FILE = "/sys/class/leds/lcd-backlight/brightness";
-char const *const BUTTON_FILE = "/sys/class/leds/misc/button-backlight/brightness";
+char const *const BUTTON_FILE = "/sys/class/leds/button-backlight/brightness";
 
 static int write_int(char const *path, int value)
 {
