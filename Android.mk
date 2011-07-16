@@ -19,4 +19,11 @@ LOCAL_SRC_FILES := sec_touchscreen.kcm
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_KEY_CHAR_MAP)
 
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := setup_fs.c
+LOCAL_MODULE := setup_fs
+LOCAL_MODULE_TAGS := optional
+#LOCAL_SHARED_LIBRARIES += libext4_utils libz
+include $(BUILD_EXECUTABLE)
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
