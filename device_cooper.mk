@@ -50,6 +50,7 @@ PRODUCT_PACKAGES += \
     brcm_patchram_plus \
     sec_touchscreen.kcm \
     copybit.cooper \
+    lights.cooper \
     gralloc.cooper \
     dexpreopt
 
