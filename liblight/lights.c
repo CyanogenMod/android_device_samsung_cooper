@@ -28,6 +28,10 @@
 #include <sys/types.h>
 #include <hardware/lights.h>
 
+static int	LED_OFF		= 0;
+static int	LED_HALF	= 127;
+static int	LED_FULL	= 255;
+
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
@@ -48,6 +52,29 @@ static int write_int(char const *path, int value)
 		char buffer[20];
 		int bytes = sprintf(buffer, "%d\n", value);
 		int amt = write(fd, buffer, bytes);
+		close(fd);
+		return amt == -1 ? -errno : 0;
+	} else {
+		if (already_warned == 0) {
+			LOGE("write_int failed to open %s\n", path);
+			already_warned = 1;
+		}
+		return -errno;
+	}
+}
+
+static int write_led(char const *path, int value)
+{
+	int fd;
+	static int already_warned;
+
+	already_warned = 0;
+
+	LOGV("write_int: path %s, value %d", path, value);
+	fd = open(path, O_RDWR);
+
+	if (fd >= 0) {
+		int amt = write(fd, value, 1);
 		close(fd);
 		return amt == -1 ? -errno : 0;
 	} else {
@@ -89,7 +116,9 @@ static int set_light_buttons (struct light_device_t* dev,
 	int on = is_lit (state);
 	LOGV("%s state->color = %d is_lit = %d", __func__,state->color , on);
 	pthread_mutex_lock (&g_lock);
-	err = write_int (BUTTON_FILE, on?1:0);
+	err = write_led (BUTTON_FILE, on?LED_FULL:LED_OFF);
+	if(err)
+		LOGE("%s error writing to LED", __func__);
 	pthread_mutex_unlock (&g_lock);
 	return 0;
 }
