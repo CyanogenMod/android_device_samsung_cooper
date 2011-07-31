@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVidEnc \
     FM \
+    Torch \
     make_ext4fs \
     brcm_patchram_plus \
     sec_touchscreen.kcm \
@@ -80,10 +81,12 @@ PRODUCT_COPY_FILES += \
 
 # WLAN + BT
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+	device/samsung/cooper/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/cooper/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     device/samsung/cooper/prebuilt/hostapd:system/bin/hostapd \
     device/samsung/cooper/prebuilt/hostapd.conf:system/etc/wifi/hostapd.conf
+    
+
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \

@@ -14,6 +14,8 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(filter cooper,$(TARGET_DEVICE)),)
+
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := sec_touchscreen.kcm
 LOCAL_MODULE_TAGS := optional
@@ -27,3 +29,4 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
+endif
