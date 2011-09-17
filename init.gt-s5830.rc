@@ -12,7 +12,7 @@ on init
     insmod /lib/modules/sec_param.ko
 
 on fs
-    mount ext4 /dev/block/stl12 /system wait nosuid nodev noatime nodiratime noauto_da_alloc
+    mount ext4 /dev/block/stl12 /system wait nodev noatime nodiratime noauto_da_alloc
     mount ext4 /dev/block/stl13 /data wait nosuid nodev noatime nodiratime noauto_da_alloc
     mount ext4 /dev/block/stl14 /cache wait nosuid nodev noatime nodiratime noauto_da_alloc
 
