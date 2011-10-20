@@ -120,6 +120,13 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dawext -W -w -iwlan0 -c/data/
 	disabled
 	oneshot
 
+# create filesystems if necessary
+service setup_fs /system/bin/setup_fs /dev/block/stl13 /dev/block/stl14
+    user root
+    group root
+    oneshot
+
+
 service wlan_mac /system/bin/wlan_mac
     user system
     group system net_raw net_admin inet
