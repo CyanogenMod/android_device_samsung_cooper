@@ -1,8 +1,47 @@
 #
-# system.prop for smdkc110
+# system.prop for cooper
 #
-
 rild.libpath=/system/lib/libsec-ril.so
 rild.libargs=-d /dev/smd0
-ro.sf.lcd_density=160
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+DEVICE_PROVISIONED=1
+ro.sf.lcd_density=120
+qemu.sf.lcd_density=120
+ro.opengles.version = 131072
 
+# Wifi interface
+wifi.interface=wlan0
+
+ro.telephony.ril_class=samsung
+mobiledata.interfaces=pdp0,gprs,ppp0,wlan0
+
+#MM Camera
+ro.media.enc.vid.m4v.fps=5,15
+ro.media.enc.vid.m4v.width=176,320
+ro.media.enc.vid.m4v.height=144,240
+ro.media.enc.vid.m4v.bps=90000,770000
+ro.media.enc.vid.h264.fps=5,15
+ro.media.enc.vid.h264.width=176,320
+ro.media.enc.vid.h264.height=144,240
+ro.media.enc.vid.h264.bps=90000,770000
+ro.media.enc.vid.h263.fps=5,15
+ro.media.enc.vid.h263.width=176,320
+ro.media.enc.vid.h263.height=144,240
+ro.media.enc.vid.h263.bps=90000,770000
+
+ro.media.enc.vid.height.min = 144
+ro.media.enc.vid.height.max = 240
+ro.media.enc.vid.width.min = 176
+ro.media.enc.vid.width.max = 320
+ro.media.enc.vid.bps.min =90000
+ro.media.enc.vid.bps.max =770000
+ro.media.enc.vid.fps.min = 5
+ro.media.enc.vid.fps.max = 15
