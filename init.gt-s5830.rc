@@ -39,7 +39,12 @@ on boot
     write /sys/devices/system/cpu/cpufreq/ondemand/down_threshold 30
 
 
-# Setup bluetooth
+    write /sys/block/mmcblk0/bdi/read_ahead_kb 256
+    setprop net.tcp.buffersize.default 4096,87380,196608,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    4095,87380,393216,4096,16384,110208
+
+    setprop ro.bt.bdaddr_path "/data/.nvmac_bt.info"
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -48,9 +53,11 @@ on boot
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+    chmod 0666 /dev/graphics/fb0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
 
     # Create the directories used by the Wireless subsystem
 	mkdir /data/misc 01771 system misc
@@ -99,10 +106,41 @@ on boot
     mkdir /data/gps 771 gps system
     chown gps system /data/gps
 
+	chown system radio /sys/devices/platform/msm-battery/power_supply/battery/talk_gsm
+	chown system radio /sys/devices/platform/msm-battery/power_supply/battery/talk_wcdma
 
 # Enable MASS storage on SDCARD
     write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
     write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
+
+    # Sensor
+    mkdir /data/misc/radio 0770 radio radio
+    mkdir /data/misc/sensors 0777 system misc
+    chown root system /dev/mmc31xx
+    chown root system /dev/bma_accel
+    chown root system /dev/kr3dm_accel
+    chown root system /dev/ecompass_ctrl
+    chown root system /dev/proximity
+    chown root system /dev/ledflash
+    chown fm_radio fm_radio /dev/radio0
+    chown system radio /sys/devices/virtual/accelerometer/accelerometer/calibrate
+    chmod 0664 /dev/radio0
+    chmod 0660 /dev/mmc31xx
+    chmod 0660 /dev/bma_accel
+    chmod 0660 /dev/kr3dm_accel
+    chmod 0660 /dev/ecompass_ctrl
+    chmod 0660 /dev/proximity
+    chmod 0660 /data/misc/sensors/ecs_nvm
+    chmod 0660 /data/misc/sensors/accel_offset
+    chmod 0664 /sys/devices/virtual/accelerometer/accelerometer/calibrate
+    chmod 0664 /sys/class/input/input3/enable
+    chmod 0660 /sys/class/input/input3/poll_delay
+    chmod 0664 /sys/class/usb_composite/rndis/enable
+
+#Provide the access to hostapd.conf only to root and group
+    chmod 0660 /data/hostapd/hostapd.conf
+
+service qmuxd /system/bin/qmuxd
 
 service dhcp-service /system/bin/netcfg wlan0 dhcp
         oneshot
@@ -113,7 +151,7 @@ on property:dev.bootcomplete=1
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
-    
+
 service wpa_supplicant /system/bin/wpa_supplicant -Dawext -W -w -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
 	group wifi inet
 	socket wpa_wlan0 dgram 660 wifi wifi
@@ -140,6 +178,18 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -BKL
 	disabled
 	oneshot
 
+service iprenew_wlan0 /system/bin/dhcpcd -n
+	disabled
+	oneshot
+
+service bdaddr_read /system/bin/bdaddr_read
+    user root
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=running
+    start bdaddr_read
+
 service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf
 	socket hostapd_athap0 dgram 660 wifi wifi
 	group wifi inet
@@ -155,3 +205,34 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --bau
 service gps-daemon /system/vendor/bin/gpsd
     user system
     group system inet
+
+service toggleshutter /system/bin/toggleshutter
+    user system
+    group system
+    oneshot
+	
+on property:ro.camera.sound.disabled=0
+    start toggleshutter
+	
+on property:ro.camera.sound.disabled=1
+    start toggleshutter
+
+on property:persist.sys.camera-mute=0
+    start toggleshutter
+
+on property:persist.sys.camera-mute=1
+    start toggleshutter
+
+# From init.gt-i5500.rc by subpsyke
+service get_macaddrs /system/bin/get_macaddrs
+    user root
+    oneshot
+    disabled
+
+on property:init.svc.ril-daemon=running
+    start get_macaddrs
+    
+service memsicd /system/vendor/bin/memsicd
+    user system
+    group system
+    oneshot
