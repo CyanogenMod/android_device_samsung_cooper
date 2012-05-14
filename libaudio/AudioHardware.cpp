@@ -85,23 +85,23 @@ static int snd_device = -1;
 #define PREPROC_CTL_DEVICE "/dev/msm_preproc_ctl"
 #define VOICE_MEMO_DEVICE "/dev/msm_voicememo"
 
-static uint32_t SND_DEVICE_CURRENT=-1;
-static uint32_t SND_DEVICE_HANDSET=-1;
-static uint32_t SND_DEVICE_SPEAKER=-1;
+static uint32_t SND_DEVICE_CURRENT=34;
+static uint32_t SND_DEVICE_HANDSET=0;
+static uint32_t SND_DEVICE_SPEAKER=6;
 static uint32_t SND_DEVICE_MEDIA_SPEAKER=-1;
-static uint32_t SND_DEVICE_BT=-1;
+static uint32_t SND_DEVICE_BT=12;
 static uint32_t SND_DEVICE_BT_EC_OFF=32; // really DEVICE_BT_NSEC_OFF
 static uint32_t SND_DEVICE_HEADSET=31;  // really MEDIA_STEREO_HEADSET
 static uint32_t SND_DEVICE_HEADSET_AND_SPEAKER=26; // really FORCE_SPEAKER
-static uint32_t SND_DEVICE_IN_S_SADC_OUT_HANDSET=-1;
-static uint32_t SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE=-1;
-static uint32_t SND_DEVICE_TTY_HEADSET=-1;
-static uint32_t SND_DEVICE_TTY_HCO=-1;
-static uint32_t SND_DEVICE_TTY_VCO=-1;
+static uint32_t SND_DEVICE_IN_S_SADC_OUT_HANDSET=16;
+static uint32_t SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE=25;
+static uint32_t SND_DEVICE_TTY_HEADSET=8;
+static uint32_t SND_DEVICE_TTY_HCO=10;
+static uint32_t SND_DEVICE_TTY_VCO=9;
 static uint32_t SND_DEVICE_CARKIT=-1;
-static uint32_t SND_DEVICE_FM_SPEAKER=-1;
+static uint32_t SND_DEVICE_FM_SPEAKER=27;
 static uint32_t SND_DEVICE_FM_HEADSET=17; // really IN_S_SADC_OUT_HEADSET
-static uint32_t SND_DEVICE_NO_MIC_HEADSET=-1;
+static uint32_t SND_DEVICE_NO_MIC_HEADSET=3;
 // ----------------------------------------------------------------------------
 
 AudioHardware::AudioHardware() :
