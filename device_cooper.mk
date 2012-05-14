@@ -46,7 +46,6 @@ PRODUCT_PACKAGES += \
     dexpreopt \
     e2fsck \
     brcm_patchram_plus \
-    sec_touchscreen.kcm \
     copybit.cooper \
     lights.cooper \
     gralloc.cooper \
@@ -58,6 +57,11 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
+
+PRODUCT_PACKAGES += \
+       sec_touchscreen.kcm \
+       sec_jack.kcm \
+       sec_key.kcm
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
@@ -128,10 +132,10 @@ PRODUCT_COPY_FILES += \
     device/samsung/cooper/prebuilt/audio.conf:system/etc/bluetooth/audio.conf
 ## keymap
 PRODUCT_COPY_FILES += \
-    device/samsung/cooper/prebuilt/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/samsung/cooper/prebuilt/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
-    device/samsung/cooper/prebuilt/sec_key.kl:system/usr/keylayout/sec_key.kl \
-    device/samsung/cooper/prebuilt/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl
+    device/samsung/cooper/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/samsung/cooper/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
+    device/samsung/cooper/sec_key.kl:system/usr/keylayout/sec_key.kl \
+    device/samsung/cooper/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl
 
 PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
