@@ -339,3 +339,4 @@ struct msm_audio_eq_stream_config {
 } __attribute__ ((packed));
 
 #endif
+
